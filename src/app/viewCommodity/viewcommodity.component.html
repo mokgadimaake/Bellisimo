@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3">
+  <h2>Item Details</h2>
+    
+        <div class='row'>
+           <div class="panel panel-default">
+           <!-- Default panel contents -->
+           <div class='panel-heading'>Item Details</div>
+            <div class='panel-body'>
+            
+              <label><strong>Name: </strong></label>
+              <label>{{selectedCommodity.name}}</label>
+
+              <br /><br />
+              <label><strong>Type: </strong></label>
+              <label>{{selectedCommodity.type}}</label>
+
+              <br /><br />
+              <label><strong>Department: </strong></label>
+              <label>{{selectedCommodity.department}}</label>
+              
+              <br /><br />
+              <label><strong>Price: </strong></label>
+              <label>{{selectedCommodity.price}}</label>
+
+              <br /><br />
+              <label><strong>Special Price: </strong></label>
+              <label>{{selectedCommodity.specialPriceDescription}}</label>
+
+            </div>
+          </div>   
+    
+          <p>
+            <a *ngIf="userLoggedIn=='true'" [routerLink]="['/login']">Logout</a> 
+            <a [routerLink]="['/commodity']" class="btn btn-link">Back</a>
+          </p>
+          
+    
+    </div>
+    
+    
+    
+    

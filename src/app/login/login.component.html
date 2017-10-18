@@ -1,0 +1,55 @@
+﻿<div *ngIf="!loggedIn" class="col-md-6 col-md-offset-3">
+        
+        <p><a [routerLink]="['/loginapp']">Sign in</a></p> 
+        <div class="form-group">
+                <label>Filter </label>
+                <input  type="text"  id="inputName" [(ngModel)]="inputName"/>
+                <input type="button" (click)="FilterByName()" value="Apply"/>
+          </div>
+          <div class='row'>
+           <div class="panel panel-default">
+           <!-- Default panel contents -->
+           <div class='panel-heading'>Item List</div>
+           <div class='panel-body'>
+                <table class="table table-bordered table-condensed ">
+                   <thead>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Type</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                   </thead>
+                   <tbody>
+                      <tr *ngFor="let commodity of commodities">
+                         <td>{{commodity.name}}</td>
+                         <td>{{commodity.department}}</td>
+                         <td>{{commodity.type}}</td>
+                         <td><a *ngIf="userLoggedIn"(click)="viewItem(commodity)">View</a></td>
+                         <td><a *ngIf="userLoggedIn" (click)="editItem(commodity)">Edit</a></td>
+                         <td><a *ngIf="userLoggedIn" (click)="deleteItem(commodity)">Delete</a></td>
+                      </tr>
+                   </tbody>
+                </table>
+                <div class="btn-toolbar" role="toolbar" style="margin: 0;">
+                 <div class="btn-group">
+                      <label style="margin-top:10px">Page {{currentIndex}}/{{pageNumber}}</label>
+                   </div>
+                   <div class="btn-group pull-right">
+                      <ul class="pagination" >
+                         <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}" ><a  (click)="prevPage()" href="#">Prev</a></li>
+                            <li *ngFor="let page of pagesIndex"  [ngClass]="{'active': (currentIndex == page)}">
+                               <a (click)="setPage(page)" href="#" >{{page}}</a>
+                            </li>
+                         <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}" ><a   (click)="nextPage()" href="#">Next</a></li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          </div>   
+    
+    </div>
+    
+    
+    
+    
